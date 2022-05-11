@@ -34,4 +34,19 @@ bool ConversionInfo::IsValid() const {
   return true;
 }
 
+std::string ConversionsAsString(
+    const std::vector<ConversionInfo>& conversions) {
+  std::string result = "{";
+  for (const auto& conversion : conversions) {
+    result += conversion.creative_set_id;
+    result += ",";
+    result += conversion.type;
+    result += ",";
+    result += conversion.url_pattern;
+    result += ";";
+  }
+  result += "}";
+  return result;
+}
+
 }  // namespace ads

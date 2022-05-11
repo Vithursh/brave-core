@@ -43,4 +43,23 @@ bool ConversionQueueItemInfo::IsValid() const {
   return true;
 }
 
+std::string ConversionsAsString(
+    const std::vector<ConversionQueueItemInfo>& conversions) {
+  std::string result = "{";
+  for (const auto& conversion : conversions) {
+    result += conversion.campaign_id;
+    result += ",";
+    result += conversion.creative_set_id;
+    result += ",";
+    result += conversion.creative_instance_id;
+    result += ",";
+    result += conversion.advertiser_id;
+    result += ",";
+    result += conversion.conversion_id;
+    result += ";";
+  }
+  result += "}";
+  return result;
+}
+
 }  // namespace ads

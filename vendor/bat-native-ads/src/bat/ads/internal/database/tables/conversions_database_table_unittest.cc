@@ -88,7 +88,9 @@ TEST_F(BatAdsConversionsDatabaseTableTest, SaveConversions) {
       [&expected_conversions](const bool success,
                               const ConversionList& conversions) {
         ASSERT_TRUE(success);
-        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions));
+        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions))
+            << ConversionsAsString(expected_conversions)
+            << ConversionsAsString(conversions);
       });
 }
 
@@ -116,7 +118,9 @@ TEST_F(BatAdsConversionsDatabaseTableTest, DoNotSaveDuplicateConversion) {
       [&expected_conversions](const bool success,
                               const ConversionList& conversions) {
         ASSERT_TRUE(success);
-        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions));
+        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions))
+            << ConversionsAsString(expected_conversions)
+            << ConversionsAsString(conversions);
       });
 }
 
@@ -164,7 +168,9 @@ TEST_F(BatAdsConversionsDatabaseTableTest, PurgeExpiredConversions) {
       [&expected_conversions](const bool success,
                               const ConversionList& conversions) {
         ASSERT_TRUE(success);
-        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions));
+        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions))
+            << ConversionsAsString(expected_conversions)
+            << ConversionsAsString(conversions);
       });
 }
 
@@ -202,7 +208,9 @@ TEST_F(BatAdsConversionsDatabaseTableTest,
       [&expected_conversions](const bool success,
                               const ConversionList& conversions) {
         ASSERT_TRUE(success);
-        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions));
+        EXPECT_TRUE(CompareAsSets(expected_conversions, conversions))
+            << ConversionsAsString(expected_conversions)
+            << ConversionsAsString(conversions);
       });
 }
 

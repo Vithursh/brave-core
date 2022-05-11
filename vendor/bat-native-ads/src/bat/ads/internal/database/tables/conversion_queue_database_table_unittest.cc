@@ -74,7 +74,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest, SaveConversionQueue) {
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -105,7 +107,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -155,7 +159,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -198,7 +204,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success, const std::string& creative_instance_id,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -238,7 +246,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -287,7 +297,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -327,7 +339,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest, DeleteConversionQueueItem) {
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -380,7 +394,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -420,7 +436,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest, UpdateConversionQueueItem) {
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 
@@ -473,7 +491,9 @@ TEST_F(BatAdsConversionQueueDatabaseTableTest,
           const bool success,
           const ConversionQueueItemList& conversion_queue_items) {
         ASSERT_TRUE(success);
-        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items);
+        EXPECT_EQ(expected_conversion_queue_items, conversion_queue_items)
+            << ConversionsAsString(expected_conversion_queue_items)
+            << ConversionsAsString(conversion_queue_items);
       });
 }
 

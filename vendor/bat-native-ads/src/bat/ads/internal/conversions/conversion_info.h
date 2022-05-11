@@ -7,6 +7,7 @@
 #define BRAVE_VENDOR_BAT_NATIVE_ADS_SRC_BAT_ADS_INTERNAL_CONVERSIONS_CONVERSION_INFO_H_
 
 #include <string>
+#include <vector>
 
 #include "base/time/time.h"
 
@@ -29,6 +30,8 @@ struct ConversionInfo final {
   int observation_window = 0;
   base::Time expire_at;
 };
+
+std::string ConversionsAsString(const std::vector<ConversionInfo>& conversions);
 
 }  // namespace ads
 
