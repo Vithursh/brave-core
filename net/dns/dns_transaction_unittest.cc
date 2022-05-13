@@ -609,7 +609,8 @@ class DnsTransactionTestBase : public testing::Test {
                               base::StringPrintf("doh_test_%zu", i)) +
                           "{?dns}");
     }
-    config_.doh_config = *DnsOverHttpsConfig::FromStrings(std::move(templates));
+    config_.doh_config =
+        *DnsOverHttpsConfig::FromTemplatesForTesting(std::move(templates));
     ConfigureFactory();
 
     if (make_available) {
@@ -970,7 +971,8 @@ class BraveDnsTransactionTest : public DnsTransactionTestBase,
       templates.push_back(url.spec());
     }
 
-    config_.doh_config = *DnsOverHttpsConfig::FromStrings(std::move(templates));
+    config_.doh_config =
+        *DnsOverHttpsConfig::FromTemplatesForTesting(std::move(templates));
     ConfigureFactory();
     for (size_t server_index = 0;
          server_index < config_.doh_config.servers().size(); ++server_index) {

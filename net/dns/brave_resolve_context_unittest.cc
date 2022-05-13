@@ -33,7 +33,8 @@ DnsConfig CreateDnsConfig() {
       decentralized_dns::kUnstoppableDomainsDoHResolver,
       decentralized_dns::kENSDoHResolver,
   };
-  config.doh_config = *DnsOverHttpsConfig::FromStrings(std::move(templates));
+  config.doh_config =
+      *DnsOverHttpsConfig::FromTemplatesForTesting(std::move(templates));
 
   return config;
 }
