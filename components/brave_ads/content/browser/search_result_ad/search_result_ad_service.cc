@@ -122,6 +122,9 @@ AdsService* SearchResultAdService::SetAdsServiceForTesting(
 void SearchResultAdService::ResetState(SessionID tab_id) {
   DCHECK(tab_id.is_valid());
 
+  for (auto& callback_info : ad_viewed_event_pending_callbacks_[tab_id]) {
+    std::move(callback_info.callback).Run(false);
+  }
   ad_viewed_event_pending_callbacks_.erase(tab_id);
   search_result_ads_.erase(tab_id);
 }

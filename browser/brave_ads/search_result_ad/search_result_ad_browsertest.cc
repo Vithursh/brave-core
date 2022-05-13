@@ -226,6 +226,7 @@ IN_PROC_BROWSER_TEST_F(SearchResultAdTest, SampleSearchAdMetadata) {
   LoadTestDataUrl(kAllowedDomain, "/brave_ads/search_result_ad_sample.html");
   run_loop->Run();
   Mock::VerifyAndClearExpectations(&ads_service);
+  EXPECT_CALL(ads_service, IsEnabled()).WillRepeatedly(Return(true));
 
   run_loop = std::make_unique<base::RunLoop>();
   EXPECT_CALL(ads_service, TriggerSearchResultAdEvent(_, _, _))
@@ -244,6 +245,7 @@ IN_PROC_BROWSER_TEST_F(SearchResultAdTest, SampleSearchAdMetadata) {
            ads::mojom::SearchResultAdEventType::kViewed);
   run_loop->Run();
   Mock::VerifyAndClearExpectations(&ads_service);
+  EXPECT_CALL(ads_service, IsEnabled()).WillRepeatedly(Return(true));
 
   EXPECT_CALL(ads_service, TriggerSearchResultAdEvent(_, _, _)).Times(0);
   std::move(trigger_callback)
