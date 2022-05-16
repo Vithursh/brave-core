@@ -345,3 +345,21 @@ IN_PROC_BROWSER_TEST_F(SearchResultAdTest, BrokenSearchAdMetadata) {
   run_loop.Run();
   sent_viewed_events_waiter.WaitForViewedEvents();
 }
+
+IN_PROC_BROWSER_TEST_F(SearchResultAdTest, IncognitoBrowser) {
+  SentViewedEventsWaiter sent_viewed_events_waiter(
+      {"data-creative-instance-id-1", "data-creative-instance-id-1",
+       "data-creative-instance-id-2", "not-existant"});
+
+  GURL url = https_server()->GetURL(kAllowedDomain,
+                                    "/brave_ads/search_result_ad_sample.html");
+  Browser* incognito_browser = OpenURLOffTheRecord(browser()->profile(), url);
+  EXPECT_FALSE(GetSearchResultAdService(incognito_browser->profile()));
+
+  content::WebContents* web_contents =
+      incognito_browser->tab_strip_model()->GetActiveWebContents();
+  EXPECT_TRUE(content::NavigateToURL(web_contents, url));
+  EXPECT_EQ(url, web_contents->GetVisibleURL());
+
+  sent_viewed_events_waiter.WaitForViewedEvents();
+}

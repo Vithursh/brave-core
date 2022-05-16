@@ -65,9 +65,6 @@ constexpr const char* kAllowedUrlPrefixes[] = {
     "https://rewards-stg.bravesoftware.com/publishers/prefix-list",
     "https://grant.rewards.bravesoftware.com/v1/promotions",
 
-    // Brave search result ad viewed confirmation
-    "https://search-ads-confirmation.brave.com/v10/view",
-
     // Other
     "https://brave-core-ext.s3.brave.com/",
     "https://dict.brave.com/",
