@@ -50,6 +50,10 @@
 #include "bat/ads/internal/legacy_migration/conversions/legacy_conversions_migration.h"
 #include "bat/ads/internal/legacy_migration/rewards/legacy_rewards_migration.h"
 #include "bat/ads/internal/privacy/tokens/token_generator.h"
+#include "bat/ads/internal/processors/behavioral/bandits/bandit_feedback_info.h"
+#include "bat/ads/internal/processors/behavioral/bandits/epsilon_greedy_bandit_processor.h"
+#include "bat/ads/internal/processors/behavioral/purchase_intent/purchase_intent_processor.h"
+#include "bat/ads/internal/processors/contextual/text_classification/text_classification_processor.h"
 #include "bat/ads/internal/resources/behavioral/anti_targeting/anti_targeting_info.h"
 #include "bat/ads/internal/resources/behavioral/anti_targeting/anti_targeting_resource.h"
 #include "bat/ads/internal/resources/behavioral/bandits/epsilon_greedy_bandit_resource.h"
@@ -67,10 +71,6 @@
 #include "bat/ads/internal/studies/studies_util.h"
 #include "bat/ads/internal/tab_manager/tab_info.h"
 #include "bat/ads/internal/tab_manager/tab_manager.h"
-#include "bat/ads/internal/targeting/processors/behavioral/bandits/bandit_feedback_info.h"
-#include "bat/ads/internal/targeting/processors/behavioral/bandits/epsilon_greedy_bandit_processor.h"
-#include "bat/ads/internal/targeting/processors/behavioral/purchase_intent/purchase_intent_processor.h"
-#include "bat/ads/internal/targeting/processors/contextual/text_classification/text_classification_processor.h"
 #include "bat/ads/internal/transfer/transfer.h"
 #include "bat/ads/internal/user_activity/browsing/user_activity.h"
 #include "bat/ads/internal/user_activity/idle_detection/idle_time.h"
@@ -542,18 +542,17 @@ void AdsImpl::set(privacy::TokenGeneratorInterface* token_generator) {
   epsilon_greedy_bandit_resource_ =
       std::make_unique<resource::EpsilonGreedyBandit>();
   epsilon_greedy_bandit_processor_ =
-      std::make_unique<targeting::processor::EpsilonGreedyBandit>();
+      std::make_unique<processor::EpsilonGreedyBandit>();
 
   text_classification_resource_ =
       std::make_unique<resource::TextClassification>();
   text_classification_processor_ =
-      std::make_unique<targeting::processor::TextClassification>(
+      std::make_unique<processor::TextClassification>(
           text_classification_resource_.get());
 
   purchase_intent_resource_ = std::make_unique<resource::PurchaseIntent>();
-  purchase_intent_processor_ =
-      std::make_unique<targeting::processor::PurchaseIntent>(
-          purchase_intent_resource_.get());
+  purchase_intent_processor_ = std::make_unique<processor::PurchaseIntent>(
+      purchase_intent_resource_.get());
 
   anti_targeting_resource_ = std::make_unique<resource::AntiTargeting>();
 

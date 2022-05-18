@@ -48,18 +48,16 @@ namespace new_tab_page_ads {
 class Serving;
 }  // namespace new_tab_page_ads
 
-namespace targeting {
-
 namespace processor {
 class EpsilonGreedyBandit;
 class PurchaseIntent;
 class TextClassification;
 }  // namespace processor
 
+namespace targeting {
 namespace geographic {
 class SubdivisionTargeting;
 }  // namespace geographic
-
 }  // namespace targeting
 
 namespace resource {
@@ -331,16 +329,14 @@ class AdsImpl final : public Ads,
   std::unique_ptr<TabManager> tab_manager_;
   std::unique_ptr<privacy::TokenGenerator> token_generator_;
   std::unique_ptr<Account> account_;
-  std::unique_ptr<targeting::processor::EpsilonGreedyBandit>
+  std::unique_ptr<processor::EpsilonGreedyBandit>
       epsilon_greedy_bandit_processor_;
   std::unique_ptr<resource::EpsilonGreedyBandit>
       epsilon_greedy_bandit_resource_;
   std::unique_ptr<resource::TextClassification> text_classification_resource_;
-  std::unique_ptr<targeting::processor::TextClassification>
-      text_classification_processor_;
+  std::unique_ptr<processor::TextClassification> text_classification_processor_;
   std::unique_ptr<resource::PurchaseIntent> purchase_intent_resource_;
-  std::unique_ptr<targeting::processor::PurchaseIntent>
-      purchase_intent_processor_;
+  std::unique_ptr<processor::PurchaseIntent> purchase_intent_processor_;
   std::unique_ptr<resource::AntiTargeting> anti_targeting_resource_;
   std::unique_ptr<resource::Conversions> conversions_resource_;
   std::unique_ptr<targeting::geographic::SubdivisionTargeting>
