@@ -20,6 +20,7 @@ import {
 import { Grid, Column, Select, ControlWrapper } from 'brave-ui/components'
 
 import { PaymentStatusView } from '../../shared/components/payment_status_view'
+import { NeedUpdateBrowserAlertView } from '../../shared/components/need_update_browser_alert_view'
 
 import * as style from './style'
 
@@ -63,6 +64,14 @@ class AdsBox extends React.Component<Props, State> {
         {getLocale('adsDisabledTextOne')} <br />
         {getLocale('adsDisabledTextTwo')}
       </DisabledContent>
+    )
+  }
+
+  needUpdateBrowserAlert = () => {
+    return (
+      <style.NeedUpdateBrowserAlert>
+        <NeedUpdateBrowserAlertView drawIcon={true}/>
+      </style.NeedUpdateBrowserAlert>
     )
   }
 
@@ -385,6 +394,7 @@ class AdsBox extends React.Component<Props, State> {
     let earningsThisMonth = 0
     let earningsLastMonth = 0
     let adEarningsReceived = false
+    let needUpdateBrowserToSeeAds = false
 
     const {
       adsData,
@@ -402,6 +412,7 @@ class AdsBox extends React.Component<Props, State> {
       adsReceivedThisMonth = adsData.adsReceivedThisMonth || 0
       earningsThisMonth = adsData.adsEarningsThisMonth || 0
       earningsLastMonth = adsData.adsEarningsLastMonth || 0
+      needUpdateBrowserToSeeAds = adsData.needUpdateBrowserToSeeAds
     }
 
     if (balanceReport) {
@@ -431,6 +442,11 @@ class AdsBox extends React.Component<Props, State> {
           settingsOpened={this.state.settings}
           onSettingsClick={this.onSettingsToggle}
           attachedAlert={this.adsNotSupportedAlert(adsIsSupported)}
+          headerAlert={
+            (needUpdateBrowserToSeeAds && !this.state.settings)
+              ? this.needUpdateBrowserAlert()
+              : null
+          }
         >
           <style.PaymentStatus>
             <PaymentStatusView

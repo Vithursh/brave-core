@@ -66,3 +66,34 @@ export const PaymentStatus = styled.div`
     display: block;
   }
 `
+
+export const NeedUpdateBrowserAlert = styled.div`
+  .need-update-browser-view {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background: #FDF1F2;
+    padding: 5px;
+    border-radius: 6px;
+  }
+
+  .need-update-browser-icon {
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    color: ${p => p.theme.palette.red500};
+  }
+
+  .need-update-browser-header {
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--brave-palette-neutral800);
+  }
+
+  .need-update-browser-body {
+    margin: 5px;
+    font-size: 15px;
+    color: var(--brave-palette-neutral800);
+  }
+`

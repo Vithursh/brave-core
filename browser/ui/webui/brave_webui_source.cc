@@ -273,6 +273,8 @@ void CustomizeWebUIHTMLSource(const std::string &name,
         { "rewardsTokenBalance", IDS_REWARDS_WIDGET_TOKEN_BALANCE },
         { "rewardsTokenGrantTitle", IDS_REWARDS_WIDGET_TOKEN_GRANT_TITLE },
         { "rewardsWidgetBraveRewards", IDS_BRAVE_UI_BRAVE_REWARDS },
+        { "browserCannotReceiveBravePrivateAds",  IDS_BRAVE_REWARDS_BROWSER_CANNOT_RECEIVE_BRAVE_ADS },  // NOLINT
+        { "browserNeedsUpdatedToSeeAds",  IDS_BRAVE_REWARDS_BROWSER_NEEDS_UPDATED_TO_SEE_ADS },  // NOLINT
 
         // Brave Talk  Widget
         { "braveTalkWidgetTitle", IDS_BRAVE_TALK_WIDGET_TITLE },
@@ -549,6 +551,9 @@ void CustomizeWebUIHTMLSource(const std::string &name,
         { "dismiss",  IDS_BRAVE_REWARDS_LOCAL_ADS_CONFIRMATION_TYPE_DISMISS },
         { "landed",  IDS_BRAVE_REWARDS_LOCAL_ADS_CONFIRMATION_TYPE_LANDED },
         { "view",  IDS_BRAVE_REWARDS_LOCAL_ADS_CONFIRMATION_TYPE_VIEW },
+
+        { "browserCannotReceiveBravePrivateAds",  IDS_BRAVE_REWARDS_BROWSER_CANNOT_RECEIVE_BRAVE_ADS },  // NOLINT
+        { "browserNeedsUpdatedToSeeAds",  IDS_BRAVE_REWARDS_BROWSER_NEEDS_UPDATED_TO_SEE_ADS },  // NOLINT
 
         { "activityCopy", IDS_BRAVE_UI_ACTIVITY_COPY },
         { "activityNote", IDS_BRAVE_UI_ACTIVITY_NOTE },

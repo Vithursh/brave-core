@@ -14,10 +14,12 @@ import AdsOnboarding from './adsOnboarding'
 import {
   StyledArrivingSoon,
   StyledListContent,
+  StyledNeedUpdateBrowserAlert,
   StyledTotalContent
 } from './style'
 
 import { PaymentStatusView } from '../../shared/components/payment_status_view'
+import { NeedUpdateBrowserAlertView } from '../../shared/components/need_update_browser_alert_view'
 
 // Utils
 import { getLocale } from '../../../../common/locale'
@@ -192,6 +194,7 @@ class AdsBox extends React.Component<Props, {}> {
     let earningsThisMonth = 0
     let earningsLastMonth = 0
     let adEarningsReceived = false
+    let needUpdateBrowserToSeeAds = false
 
     const {
       adsData,
@@ -208,6 +211,7 @@ class AdsBox extends React.Component<Props, {}> {
       adsReceivedThisMonth = adsData.adsReceivedThisMonth || 0
       earningsThisMonth = adsData.adsEarningsThisMonth || 0
       earningsLastMonth = adsData.adsEarningsLastMonth || 0
+      needUpdateBrowserToSeeAds = adsData.needUpdateBrowserToSeeAds
     }
 
     if (balanceReport) {
@@ -236,6 +240,12 @@ class AdsBox extends React.Component<Props, {}> {
     }
     if (!isDisabled && !boxPropsExtra.checked) {
       boxPropsExtra.extraDescriptionChild = <AdsOnboarding />
+    }
+    if (needUpdateBrowserToSeeAds) {
+      boxPropsExtra.headerAlertContent =
+          <StyledNeedUpdateBrowserAlert>
+              <NeedUpdateBrowserAlertView drawIcon={true}/>
+          </StyledNeedUpdateBrowserAlert>
     }
 
     const tokenString = getLocale('tokens')

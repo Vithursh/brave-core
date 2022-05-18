@@ -157,6 +157,37 @@ export const pendingRewards = styled.div`
   }
 `
 
+export const needUpdateBrowserAlert = styled.div`
+  .need-update-browser-view {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background: #FDF1F2;
+    padding: 5px;
+    border-radius: 6px;
+  }
+
+  .need-update-browser-icon {
+    width: 24px;
+    height: 24px;
+    margin: 8px;
+    color: ${p => p.theme.palette.red500};
+  }
+
+  .need-update-browser-header {
+    margin: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brave-palette-neutral800);
+  }
+
+  .need-update-browser-body {
+    margin: 5px;
+    font-size: 13px;
+    color: var(--brave-palette-neutral800);
+  }
+`
+
 export const progressHeader = styled.div`
   margin-top: 16px;
   display: flex;

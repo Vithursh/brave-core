@@ -287,6 +287,7 @@ class RewardsDOMHandler
 
   // AdsServiceObserver implementation
   void OnAdRewardsChanged() override;
+  void OnNeedToUpdateBrowserToSeeAds() override;
 
   void InitPrefChangeRegistrar();
   void OnPrefChanged(const std::string& key);
@@ -315,6 +316,7 @@ const char kShouldAllowAdsSubdivisionTargeting[] =
 const char kAdsSubdivisionTargeting[] = "adsSubdivisionTargeting";
 const char kAutoDetectedAdsSubdivisionTargeting[] =
     "automaticallyDetectedAdsSubdivisionTargeting";
+const char kNeedUpdateBrowserToSeeAds[] = "needUpdateBrowserToSeeAds";
 
 }  // namespace
 
@@ -1249,6 +1251,9 @@ void RewardsDOMHandler::GetAdsData(const base::Value::List& args) {
 
   ads_data.SetBoolean("adsUIEnabled", true);
 
+  ads_data.SetBoolean(kNeedUpdateBrowserToSeeAds,
+                      ads_service_->IsNeededToUpdateBrowserToSeeAds());
+
   CallJavascriptFunction("brave_rewards.adsData", ads_data);
 }
 
@@ -1565,6 +1570,10 @@ void RewardsDOMHandler::OnStatementChanged(
 void RewardsDOMHandler::OnAdRewardsChanged() {
   ads_service_->GetStatementOfAccounts(base::BindOnce(
       &RewardsDOMHandler::OnGetStatement, weak_factory_.GetWeakPtr()));
+}
+
+void RewardsDOMHandler::OnNeedToUpdateBrowserToSeeAds() {
+  GetAdsData(base::Value::List());
 }
 
 void RewardsDOMHandler::OnRecurringTipSaved(

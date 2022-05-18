@@ -16,6 +16,7 @@ import { ExchangeAmount } from '../exchange_amount'
 import { NewTabLink } from '../new_tab_link'
 import { GrantOverlay } from './grant_overlay'
 import { PaymentStatusView, shouldRenderPendingRewards } from '../payment_status_view'
+import { NeedUpdateBrowserAlertView } from '../need_update_browser_alert_view'
 
 import * as urls from '../../lib/rewards_urls'
 
@@ -62,6 +63,7 @@ interface Props {
   rewardsEnabled: boolean
   adsEnabled: boolean
   adsSupported: boolean
+  adsData: NewTab.AdsData
   rewardsBalance: number
   exchangeRate: number
   exchangeCurrency: string
@@ -86,6 +88,23 @@ export function RewardsCard (props: Props) {
           grantInfo={props.grantInfo}
           onClaim={props.onClaimGrant}
         />
+      )
+    }
+
+    if (props.adsData.needUpdateBrowserToSeeAds) {
+      return (
+        <style.balance>
+          <style.needUpdateBrowserAlert>
+            <NeedUpdateBrowserAlertView drawIcon={false}/>
+          </style.needUpdateBrowserAlert>
+          <style.pendingRewards>
+            <PaymentStatusView
+              earningsLastMonth={props.earningsLastMonth}
+              earningsReceived={props.earningsReceived}
+              nextPaymentDate={props.nextPaymentDate}
+            />
+          </style.pendingRewards>
+        </style.balance>
       )
     }
 

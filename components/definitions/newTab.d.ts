@@ -147,6 +147,10 @@ declare namespace NewTab {
     brandedWallpaper?: BrandedWallpaper
   }
 
+  export interface AdsData {
+    needUpdateBrowserToSeeAds: boolean
+  }
+  
   export interface RewardsWidgetState {
     rewardsEnabled: boolean
     adsSupported?: boolean
@@ -155,6 +159,7 @@ declare namespace NewTab {
     adsAccountStatement: AdsAccountStatement
     dismissedNotifications: string[]
     enabledAds: boolean
+    adsData: AdsData
     promotions: Promotion[]
     parameters: RewardsParameters
     totalContribution: number
