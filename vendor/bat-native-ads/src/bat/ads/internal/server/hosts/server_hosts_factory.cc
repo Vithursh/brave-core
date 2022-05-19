@@ -5,6 +5,7 @@
 
 #include "bat/ads/internal/server/hosts/server_hosts_factory.h"
 
+#include "bat/ads/internal/server/hosts/anonymous_search_server_host.h"
 #include "bat/ads/internal/server/hosts/anonymous_server_host.h"
 #include "bat/ads/internal/server/hosts/geo_server_host.h"
 #include "bat/ads/internal/server/hosts/non_anonymous_server_host.h"
@@ -29,6 +30,10 @@ std::unique_ptr<ServerHostInterface> ServerHostsFactory::Build(
 
     case ServerHostType::kAnonymous: {
       return std::make_unique<AnonymousServerHost>();
+    }
+
+    case ServerHostType::kAnonymousSearch: {
+      return std::make_unique<AnonymousSearchServerHost>();
     }
   }
 }

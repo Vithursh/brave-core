@@ -9,6 +9,9 @@
 #include <string>
 
 namespace ads {
+
+class AdType;
+
 namespace server {
 
 // Use for requests that are not user-specific and do not process personal data
@@ -23,7 +26,7 @@ std::string GetNonAnonymousHost();
 
 // Use for requests that must not include the wallet ID or allow Brave to link
 // the request to a wallet in any other way
-std::string GetAnonymousHost();
+std::string GetAnonymousHost(const AdType& ad_type);
 
 }  // namespace server
 }  // namespace ads

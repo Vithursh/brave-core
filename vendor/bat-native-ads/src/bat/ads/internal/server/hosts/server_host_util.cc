@@ -8,6 +8,8 @@
 #include <memory>
 
 #include "base/check.h"
+#include "base/notreached.h"
+#include "bat/ads/ad_type.h"
 #include "bat/ads/internal/server/hosts/server_host_types.h"
 #include "bat/ads/internal/server/hosts/server_hosts_factory.h"
 
@@ -38,8 +40,24 @@ std::string GetNonAnonymousHost() {
   return GetHost(ServerHostType::kNonAnonymous);
 }
 
-std::string GetAnonymousHost() {
-  return GetHost(ServerHostType::kAnonymous);
+std::string GetAnonymousHost(const AdType& ad_type) {
+  switch (ad_type.value()) {
+    case AdType::kSearchResultAd: {
+      return GetHost(ServerHostType::kAnonymousSearch);
+    }
+
+    case AdType::kAdNotification:
+    case AdType::kNewTabPageAd:
+    case AdType::kPromotedContentAd:
+    case AdType::kInlineContentAd: {
+      return GetHost(ServerHostType::kAnonymous);
+    }
+
+    case AdType::kUndefined: {
+      NOTREACHED();
+      return GetHost(ServerHostType::kAnonymous);
+    }
+  }
 }
 
 }  // namespace server

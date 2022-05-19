@@ -36,7 +36,8 @@ mojom::UrlRequestPtr FetchPaymentTokenUrlRequestBuilder::Build() {
 
 GURL FetchPaymentTokenUrlRequestBuilder::BuildUrl() const {
   const std::string spec = base::StringPrintf(
-      "%s/v2/confirmation/%s/paymentToken", server::GetAnonymousHost().c_str(),
+      "%s/v2/confirmation/%s/paymentToken",
+      server::GetAnonymousHost(confirmation_.ad_type).c_str(),
       confirmation_.id.c_str());
   return GURL(spec);
 }

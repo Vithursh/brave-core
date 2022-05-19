@@ -8,7 +8,13 @@
 
 namespace ads {
 
-enum class ServerHostType { kStatic = 0, kGeo, kNonAnonymous, kAnonymous };
+enum class ServerHostType {
+  kStatic = 0,
+  kGeo,
+  kNonAnonymous,
+  kAnonymous,
+  kAnonymousSearch
+};
 
 }  // namespace ads
 

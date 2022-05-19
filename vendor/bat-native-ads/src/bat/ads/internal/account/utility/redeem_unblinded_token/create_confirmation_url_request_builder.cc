@@ -38,9 +38,10 @@ mojom::UrlRequestPtr CreateConfirmationUrlRequestBuilder::Build() {
 ///////////////////////////////////////////////////////////////////////////////
 
 GURL CreateConfirmationUrlRequestBuilder::BuildUrl() const {
-  std::string spec = base::StringPrintf("%s/v2/confirmation/%s",
-                                        server::GetAnonymousHost().c_str(),
-                                        confirmation_.id.c_str());
+  std::string spec = base::StringPrintf(
+      "%s/v2/confirmation/%s",
+      server::GetAnonymousHost(confirmation_.ad_type).c_str(),
+      confirmation_.id.c_str());
 
   if (!confirmation_.credential.empty()) {
     spec += "/";

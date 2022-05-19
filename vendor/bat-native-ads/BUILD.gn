@@ -871,6 +871,8 @@ source_set("ads") {
     "src/bat/ads/internal/segments/segments_util.h",
     "src/bat/ads/internal/server/headers/via_header_util.cc",
     "src/bat/ads/internal/server/headers/via_header_util.h",
+    "src/bat/ads/internal/server/hosts/anonymous_search_server_host.cc",
+    "src/bat/ads/internal/server/hosts/anonymous_search_server_host.h",
     "src/bat/ads/internal/server/hosts/anonymous_server_host.cc",
     "src/bat/ads/internal/server/hosts/anonymous_server_host.h",
     "src/bat/ads/internal/server/hosts/geo_server_host.cc",

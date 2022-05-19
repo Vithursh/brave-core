@@ -5,6 +5,7 @@
 
 #include "bat/ads/internal/server/hosts/server_host_util.h"
 
+#include "bat/ads/ad_type.h"
 #include "bat/ads/internal/base/unittest_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -53,10 +54,22 @@ TEST(BatAdsServerHostUtilTest, GetAnonymousHost) {
   SetEnvironment(mojom::Environment::kProduction);
 
   // Act
-  const std::string host = server::GetAnonymousHost();
+  const std::string host = server::GetAnonymousHost(AdType::kAdNotification);
 
   // Assert
   const std::string expected_host = "https://anonymous.ads.brave.com";
+  EXPECT_EQ(expected_host, host);
+}
+
+TEST(BatAdsServerHostUtilTest, GetAnonymousSearchHost) {
+  // Arrange
+  SetEnvironment(mojom::Environment::kProduction);
+
+  // Act
+  const std::string host = server::GetAnonymousHost(AdType::kSearchResultAd);
+
+  // Assert
+  const std::string expected_host = "https://search.anonymous.ads.brave.com";
   EXPECT_EQ(expected_host, host);
 }
 
