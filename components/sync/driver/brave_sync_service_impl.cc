@@ -142,4 +142,27 @@ void BraveSyncServiceImpl::ResumeDeviceObserver() {
   sync_service_impl_delegate_->ResumeDeviceObserver();
 }
 
+void BraveSyncServiceImpl::OnEngineInitialized(
+    const WeakHandle<DataTypeDebugInfoListener>& debug_info_listener,
+    bool success,
+    bool is_first_time_sync_configure) {
+  SyncServiceImpl::OnEngineInitialized(debug_info_listener, success,
+                                       is_first_time_sync_configure);
+
+  std::string passphrase = GetOrCreateSyncCode();
+  syncer::SyncUserSettings* sync_user_settings = GetUserSettings();
+
+  if (!IsEngineInitialized() || passphrase.empty() ||
+      !sync_user_settings->IsFirstSetupComplete()) {
+    return;
+  }
+
+  if (crypto_.IsPassphraseRequired()) {
+    bool set_passphrase_result =
+        sync_user_settings->SetDecryptionPassphrase(passphrase);
+    VLOG(1) << "Forced set decryption passphrase result is "
+            << set_passphrase_result;
+  }
+}
+
 }  // namespace syncer
